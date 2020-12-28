@@ -1,0 +1,16 @@
+sudo: required
+# For root user it's required 
+
+services:
+  - docker 
+  # Before start install docker in the new container 
+
+before_install:
+  - docker build -t sasi/docker-react -f Dockerfile.dev . 
+
+
+script:
+  - docker run sasi/docker-react npm run test -- --coverage 
+  # when new commits, travis takes the changes and build the docker image and run the script 
+  # Here it will run test case and return the coverage, that's why addedd -- --coverage 
+
