@@ -1,3 +1,5 @@
+language: generic 
+
 sudo: required
 # For root user it's required 
 
@@ -10,8 +12,7 @@ before_install:
 
 
 script:
-  - docker run sasi/docker-react npm run test -- --coverage 
+  - docker run -e CI=true sasi/docker-react npm run test
   # when new commits, travis takes the changes and build the docker image and run the script 
   # Here it will run test case and return the coverage, that's why addedd -- --coverage 
-  # testing
 
